@@ -1,36 +1,22 @@
 import random
 import time
 
-qSFI = [
-    {"q": "who was the last leader of the USSR", "a": "Mikhail S. Gorbachov"},
-    {"q": "what alliance did the USSR form in reaction to NATO", "a":"The Warsaw Pact"},
-    {"q": "what economic plan for europe was proposed by the united states and what was the USSR's counter", "a":"The Marshall Plan, COMECON"},
-    {"q": "who founded the socialist party of peru", "a": "Jose Carlos Mariategui"},
-    {"q": "What was the name of the revolutionary organization in peru", "a": "American Popular Revolutionary Alliance"},
-    {"q": "Who founded the American Popular Revolutionary Alliance", "a": "Victor Raul Haya de la Torre"},
-    {"q": "What mural did Diego Rivera paint as a critique of the United States", "a": "Portrait of America"},
-    {"q": "Who invented 'dollar diplomacy'", "a": "William Howard Taft"},
-    {"q": "What brizilian leader reformed his country under the slogan, 'Estado Novo'", "a": "Getulio Dornelles Vargas"},
-    {"q": "What was the name of the foreign policy created by Franklin D. Roosevelt towards Latin America", "a": "Good Neighbor Policy"},
-    {"q": "What Military force did the US train in nicaragua", "a": "Guarda Nacional"},
-    {"q": "What nicaraguan dictator rose to power as a consequence of american intervention", "a": "Anastacio Somoza Garcia"},
-    {"q": "Who was the leader of the rebel movement in nicaragua featured in Diego Rivera's 'Portrait of America'", "a": "Augusto Cesar Sandino"},
-    {"q": "What was the name of the corollary to the Monroe doctrine that sanctioned foreign interventions for the purpose of maintaining stability and preventing the spread of communism", "a": "Roosevelt Corollary"},
-    {"q": "What Brazilian Woman was adopted by hollywood in an attempt to better foreign relations/perceptions in the americas", "a": "Carmen Miranda"},
-    {"q": "What mascot, modeled after Carmen Miranda was adopted by the United Fruit Company", "a": "Chiquita Banana"},
-    {"q": "What was the movement held among indians that emphasized religious differences and called for partition", "a": "Comunalism"},
-    {"q": "What Mexican President Nationalized the Mexican Oil Industry", "a": "Lazaro Cardenas"},
-    {"q": "What event, also known as the day of direct action, resulted in mass violence between Muslims and Hindus in India", "a": "Calcutta Killing"},
-    {"q": "What Conference represented the beginnings of the non-aligned movement in asia and africa", "a": "Bandung Conference"},
-    {"q": "What General lead the viet minh during the vietnamese war against france", "a": "Vo Nguyen Giap"},
-    {"q": "Where did the final battle of the France-Vietnam War take place", "a": "Dienbienphu"},
-    {"q": "What conference following the end of the France-Vietnam war partitioned Vietnam into North and South", "a": "Geneva Conference"},
-    {"q": "What US president coined Domino Theory", "a": "Dwight Eisenhower"},
-    {"q": "What organization, Also known as the National Liberation Front developed in south vietnam with the aim of overthrowing US control and unifying the country", "a": "Viet Cong"},
-    {"q": "What President Furthered US involvement in the vietnam War", "a": "Lyndon B. Johnson"},
-    {"q": "What president ended the Vietnam war under the slogan of Vietnamization", "a": "Richard Nixon"}
-
-    ]
+qSFI = []
+with open("SFI.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        # 1. Remove the invisible "newline" at the end
+        line = line.strip()
+        
+        # 2. Skip empty lines so your program doesn't crash
+        if not line:
+            continue
+            
+        # 3. Split the line at the pipe symbol
+        if "|" in line:
+            question, answer = line.split("|")
+            
+            # 4. Add it to your list as a dictionary
+            qSFI.append({"q": question, "a": answer})
 
 qID = [
     {"q": "Ejemplo XXXV", "a": "Don Juan Manuel, Medieval"},
